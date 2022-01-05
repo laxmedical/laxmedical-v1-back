@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Lax &mdash; Medic</title>
+    <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+    <meta name="author" content="FreeHTML5.co" />
+
+    <!-- Favicons -->
+    <link href="/static/img/logo/aurora_logo.png" rel="icon">
+    <link href="/static/img/logo/aurora_logo.png" rel="apple-touch-icon">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="/static/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="{% static 'vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/static/css/materialize.min.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/animate.min.css">
+    <link href="/static/css/login.css" type="text/css" rel="stylesheet" />
+
+    <script src="/static/css/materialize.min.css"></script>
+
+    <!-- Modernizr JS -->
+    <script src="{% static 'vendors/anime.js/lib/anime.min.js' %}"></script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <!-- Modernizr JS -->
+    <script src="{% static 'vendors/modernizr-2.6.2.min.js' %}"></script>
+
+    <!-- =======================================================
+	  * Template Name: Avilon - v2.1.0
+	  * Template URL: https://bootstrapmade.com/avilon-bootstrap-landing-page-template/
+	  * Author: BootstrapMade.com
+	  * License: https://bootstrapmade.com/license/
+	  ======================================================== -->
+</head>
+
+<body class="">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header-transparent">
+        <div class="">
+            <nav id="nav-menu-container" class="message wow fadeInDown">
+                <div>{{ clien }}</div>
+            </nav>
+            <!-- #nav-menu-container -->
+        </div>
+    </header>
+    <!-- End Header  -->
+
+    <div id="page">
+        <main>
+            <div id="anim_logo">
+            </div>
+
+            <div class="header">
+                <div class="">
+                    <div class="login-form wow fadeInUp">
+                        <h1>Login</h1>
+                        {% if error %}
+                        <p style="color: rgb(222, 126, 126);"><strong>Utilisateur inexistant ou mauvais de mot depasse.</strong></p>
+                        {% endif %} {% if user.is_authenticated %} Vous êtes connecté, {{ user.username }} !
+                        <a class="btn" href="{% url 'workplace' %}" style="color: aqua;">
+                            <h3>accédé ici <i class="fa fa-sign-in" aria-hidden="true"></i></h3>
+                        </a>
+                        {% else %}
+                        <form class="msger-inputarea" method="POST" action=".">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input id="prenom" type="text" name="username" required />
+                                <label>Prenom</label>
+                            </div>
+                            <div class="form-group">
+                                <input id="nom" type="text" name="password" required />
+                                <label>Nom</label>
+                            </div>
+                            <input type="submit" value="Entrer" name="Entrer" />
+                        </form>
+                        {% endif %}
+                        <p style="color: rgb(213, 234, 253);">
+                            <strong><i class="fa fa-connectdevelop" aria-hidden="false"></i>Developpée par Merdi Akelax</strong>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="wave-gradient" gradientTransform="rotate(90)">
+            <stop offset="5%" stop-color="#4286f4" />
+            <stop offset="35%" stop-color="#373b44" />
+          </linearGradient>
+          <path id="a" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z" />
+        </defs>
+        <g class="wave-paths">
+          <use xlink:href="#a" x="0" />
+          <use xlink:href="#a" x="50" y="3" />
+          <use xlink:href="#a" x="100" y="5" />
+          <use xlink:href="#a" x="150" y="7" />
+        </g>
+      </svg>
+            </div>
+
+        </main>
+    </div>
+    {% block script %}
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendors/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+
+    <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+    <script src="{% static 'vendor/superfish/superfish.min.js' %}"></script>
+    <script src="{% static 'vendor/hoverIntent/hoverIntent.js' %}"></script>
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main.js' %} "></script>
+
+
+    <script>
+        var prenom = document.getElementById('prenom');
+        var nom = document.getElementById('nom');
+        var validation = document.getElementById('validation');
+
+        const labels = document.querySelectorAll(".form-group label");
+
+        labels.forEach((label) => {
+            label.innerHTML = label.innerText
+                .split("")
+                .map(
+                    (letter, i) =>
+                    `<span style="transition-delay: ${i * 50}ms";>${letter}</span>`
+                )
+                .join("");
+            console.log(location.host);
+        });
+
+        validation.addEventListener('click', f_valid);
+
+        function f_valid(e) {
+            document.cookie = "Prenom=" + prenom.value + "; experes=Sun, 17 Jul 2021 12:00:00 UTC; path=/";
+            document.cookie = "Nom=" + nom.value + "; expires=Sun, 17 Jul 2021 12:00:00 UTC; path=/";
+            location.replace("{% url 'home' %}");
+        }
+    </script>
+
+    {% endblock script %}

@@ -1,0 +1,110 @@
+/* Custom Stylesheet */
+
+
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+    color: rgb(255, 255, 255);
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+}
+
+#nav-logo {
+    height: 63px;
+    margin-right: 10px;
+}
+
+p {
+    line-height: 2rem;
+}
+
+.intro {
+    height: 80vh !important;
+}
+
+.sidenav-trigger {
+    color: #ffffff;
+}
+
+.parallax-container {
+    min-height: 380px;
+    line-height: 0;
+    height: auto;
+}
+
+.parallax-container .section {
+    width: 100%;
+}
+
+.service-icon {
+    color: rgb(44, 129, 207) !important;
+    font-size: 35px;
+}
+
+.service-title {
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 992px) {
+    .parallax-container .section {
+        position: absolute;
+        top: 40%;
+    }
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #index-banner .section {
+        top: 0;
+    }
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+footer.page-footer {
+    margin: 0;
+}
+
+
+/* Back to top button */
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    background: linear-gradient(45deg, rgba(0, 132, 255, 0.699), #31c9e48c);
+    color: #fff;
+    padding: 2px 20px 8px 20px;
+    font-size: 16px;
+    border-radius: 4px 4px 0 0;
+    right: 15px;
+    bottom: 0;
+    transition: none;
+}
+
+.back-to-top:focus {
+    background: linear-gradient(45deg, rgba(255, 166, 0, 0.295), #e4823167);
+    color: #fff;
+    outline: none;
+}
+
+.back-to-top:hover {
+    background: linear-gradient(45deg, rgba(9, 99, 172, 0.842), #31cfe4e5);
+    color: #fff;
+}

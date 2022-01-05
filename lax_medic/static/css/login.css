@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+body {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+
+#nav-menu-container {
+    box-shadow: inset 0 0 1em .25em rgb(75, 75, 75);
+    background: rgba(0, 0, 0, 0.331);
+}
+
+.message {
+    overflow: hidden;
+    /* masque tout ce qui dépasse */
+}
+
+.message div {
+    font-size: 25px;
+    color: aliceblue;
+    display: inline-block;
+    /* modèle de boîte en ligne */
+    padding-right: 2em;
+    /* un peu d'espace pour la transition */
+    padding-left: 100%;
+    /* placement à droite du conteneur */
+    white-space: nowrap;
+    /* pas de passage à la ligne */
+    animation: defilement-rtl 100s infinite linear;
+}
+
+.message div:hover {
+    animation-play-state: paused;
+}
+
+@keyframes defilement-rtl {
+    0% {
+        transform: translate3d(0, 0, 0);
+        /* position initiale à droite */
+    }
+    100% {
+        transform: translate3d(-100%, 0, 0);
+        /* position finale à gauche */
+    }
+}
+
+
+/* kfmldf */
+
+#page {
+    background-color: black;
+}
+
+main {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background: url(/static/img/830x532_orionides-illumineront-ciel-nuit-vendredi-samedi.jpg);
+    background-repeat: repeat-x;
+}
+
+#anim_logo {
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    background: url(/static/img/kisspng-earth-lunar-eclipse-moon-natural-satellite-desktop-5b3b65c43de9f1.7306353015306193322536.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: anim 60s ease-in-out infinite;
+    fill: url(#wave-gradient);
+}
+
+@keyframes anim {
+    0% {
+        transform: translate3d(-5vw, 60vh, 0);
+        border-radius: 100%;
+    }
+    25% {
+        transform: translate3d(50vw, 0vh, 0);
+    }
+    50% {
+        transform: translate3d(100vw, 60vh, 0);
+    }
+    75% {
+        transform: translate3d(50vw, 0vh, 0);
+    }
+    100% {
+        transform: translate3d(-10vw, 60vh, 0);
+        border-radius: 100%;
+    }
+}
+
+.header {
+    position: fixed;
+    height: 80%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header h1 {
+    font-weight: 300;
+    font-size: 3rem;
+    color: white;
+    margin: 0;
+}
+
+.waves {
+    position: absolute;
+    top: 65%;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+}
+
+
+/* Animation */
+
+.wave-paths use {
+    animation: move-waves 10s ease-in-out infinite;
+    fill: url(#wave-gradient);
+}
+
+.wave-paths use:nth-child(odd) {
+    animation-direction: reverse;
+    animation-duration: 13s;
+}
+
+.wave-paths use:nth-child(1) {
+    animation-delay: -2s;
+    opacity: 0.7;
+}
+
+.wave-paths use:nth-child(2) {
+    animation-delay: -3s;
+    opacity: 0.5;
+}
+
+.wave-paths use:nth-child(3) {
+    animation-delay: -4s;
+    opacity: 0.3;
+}
+
+.wave-paths use:nth-child(4) {
+    animation-delay: -5s;
+}
+
+@keyframes move-waves {
+    0% {
+        transform: translate3d(-30px, 0, 0);
+    }
+    50% {
+        transform: translate3d(30px, 0, 0);
+    }
+    100% {
+        transform: translate3d(-30px, 0, 0);
+    }
+}
+
+
+/**/
+
+.login-form {
+    width: 350px;
+    height: 400px;
+    text-align: center;
+    border-radius: 0.3rem;
+    padding: 0.5rem 2.5rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.29);
+}
+
+.login-form h1 {
+    font-size: 2.5rem;
+    margin: 2.3rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input {
+    border: none;
+    border-bottom: 0.15rem var(--primary-color) solid;
+    height: 2.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    font-family: inherit;
+    font-size: 1.5rem;
+    border-radius: 0.2rem;
+    padding: 1rem 0.5rem;
+}
+
+.form-group input:focus,
+.form-group input:valid {
+    outline: 0;
+    border-bottom: 0.2rem var(--primary-color-lighter) solid;
+}
+
+.form-group label {
+    color: rgb(27, 33, 38);
+    font-size: 1rem;
+    position: absolute;
+    left: 0.5rem;
+    top: 0.3rem;
+}
+
+.form-group label span {
+    color: #3b3e41ac;
+    display: inline-block;
+    font-size: 1.5rem;
+    min-width: 0.5rem;
+    transition: 300ms cubic-bezier(0.26, -0.55, 0.256, 1.55);
+}
+
+.form-group input:focus+label span,
+.form-group input:valid+label span {
+    color: var(--primary-color-lighter);
+    transform: translateY(-1.8rem);
+}
+
+.login-form button {
+    height: 2.5rem;
+    width: 100%;
+    margin-bottom: 2rem auto;
+    border: none;
+    font-family: inherit;
+    font-size: 1.3rem;
+    border-radius: 0.2rem;
+}
+
+.login-form button:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+
+.login-form button:active {
+    transform: scale(0.97);
+    background-color: var(--primary-color-lighter);
+}
+
+.login-form a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.login-form p {
+    margin: 1.5rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0.5rem;
+}
+
+.created-by {
+    color: var(--primary-color);
+}
