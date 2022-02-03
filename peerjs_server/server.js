@@ -1,4 +1,4 @@
-const https = require('https'),
+const https = require('http'),
     fs = require("fs");
 const express = require('express');
 const { ExpressPeerServer } = require('peer');
@@ -9,19 +9,11 @@ app.get('/', (req, res, next) => res.send('Hello world!'));
 
 // =======
 app.listen(9009);
-sslOptions = {
-    key: fs.readFileSync('C:\\OpenSSL\\privateKey.key'),
-    cert: fs.readFileSync('C:\\OpenSSL\\certificate.crt')
-}
 
-const server = https.createServer(sslOptions, app).listen(9000);
+const server = https.createServer(app).listen(9000);
 
 const peerServer = ExpressPeerServer(server, {
     path: '',
-    ssl: {
-        key: fs.readFileSync('C:\\OpenSSL\\privateKey.key'),
-        cert: fs.readFileSync('C:\\OpenSSL\\certificate.crt')
-    }
 });
 
 var connected = [];
